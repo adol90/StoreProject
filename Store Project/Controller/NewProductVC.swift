@@ -22,16 +22,23 @@ class NewProduct : UIViewController {
     @IBOutlet weak var descriptionTxtView: UITextView!
     @IBOutlet weak var priceTxt: UITextField!
     @IBOutlet weak var companyTxt: UITextField!
-    @IBOutlet weak var productImg: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var collectionPicker: UIPickerView!
     @IBOutlet weak var adImg: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            collectionView.delegate = self ; collectionView.dataSource = self
+            collectionView.register(UINib(nibName: "ImageCView", bundle: nil), forCellWithReuseIdentifier: "cell")
+        }
+    }
+    
     
     //Variables :
-    let imgPicker = ImagePickerController()
+    var imgPicker = ImagePickerController()
     var collection = ""
     let collectionArray = ["Products", "Offers"]
     var editedProduct : ProductObject?
+    var imgs : [UIImage] = []
     
     
     override func viewDidLoad() {
@@ -41,14 +48,20 @@ class NewProduct : UIViewController {
         collectionPicker.dataSource = self
         
         activityIndicator.isHidden = true
-        imgPicker.settings.selection.max = 1
-        imgPicker.settings.theme.selectionStyle = .checked
+        imgPicker.settings.selection.max = 5
+        imgPicker.settings.theme.selectionStyle = .numbered
         imgPicker.settings.selection.unselectOnReachingMax = true
         
         editingMode()
     }
     
     @IBAction func uploadImPressed(_ sender: Any) {
+        
+        
+        imgPicker = ImagePickerController()
+        imgPicker.settings.selection.max = 5
+        imgPicker.settings.theme.selectionStyle = .numbered
+        
         
         presentImagePicker( imgPicker, select: { (phAsset) in
             
@@ -58,30 +71,58 @@ class NewProduct : UIViewController {
             
         }, finish:  { (phAsset) in
             
-            if phAsset.count > 0 {
-                let img = phAsset[0]
-                self.productImg.image = self.getUIImage(asset: img)
+            for one in phAsset {
+                
+                    self.imgs.append(self.getUIImage(asset: one))
             }
-            
-
+            self.collectionView.reloadData()
         }
+            
     )}
     
     func editingMode() {
+        
+        let cell = ImageCView()
+        
         if let editedP = editedProduct {
             self.nameTxt.text = editedP.name
             self.companyTxt.text = editedP.company
             self.descriptionTxtView.text = editedP.description
             self.priceTxt.text = editedP.price?.description
-            let strUrl = editedP.imgUrl
-            let url = URL(string: strUrl!)
-            self.productImg.sd_setImage(with: url, completed: nil)
-           
+            
+            guard let strUrls = editedP.imgUrls else { return }
+            for one in strUrls {
+                var urlsArray = [URL]()
+                urlsArray.append(URL(string: one) ?? URL(string: "no link")!)
+                cell.update(url: one)
+            }
+       
             
         }
     }
     
+    
+    func uploadManyImgs( completion : @escaping (_ urls : [String]) -> ()) {
+        var uploadedImgs : [String] = []
+        for img in self.imgs {
+
+            img.upload(completion: { (url) in
+                uploadedImgs.append(url)
+                if self.imgs.count == uploadedImgs.count {
+                    completion(uploadedImgs)
+                }
+            })
+
+        }
+    }
+
+    
     @IBAction func uploadAdImgPressed(_ sender: Any) {
+        
+        imgPicker = ImagePickerController()
+        imgPicker.settings.selection.max = 5
+        imgPicker.settings.theme.selectionStyle = .numbered
+        
         
         presentImagePicker( imgPicker, select: { (phAsset) in
                    
@@ -107,19 +148,22 @@ class NewProduct : UIViewController {
         
         activityIndicator.isHidden = false
         
-        self.productImg.image?.upload(completion : {(imageUrl : String) in
+        self.uploadManyImgs { (urls : [String]) in
             
+        
+
                 guard let price = Double(self.priceTxt.text!) else {return}
-            
+
                 var randomID : String!
                 if let editingID = self.editedProduct?.id { randomID = editingID }
                 else { randomID = UUID().uuidString }
-            
-                let newProduct = ProductObject(id: randomID, name: self.nameTxt.text!, imgUrl : imageUrl ,  timeStamp: Date().timeIntervalSince1970, company: self.companyTxt.text!, price: price, description: self.descriptionTxtView.text!)
+
+                let newProduct = ProductObject(id: randomID, name: self.nameTxt.text!, imgUrls : urls ,  timeStamp: Date().timeIntervalSince1970, company: self.companyTxt.text!, price: price, description: self.descriptionTxtView.text!)
                 newProduct.upload()
             print("product has been uploaded successfully :)")
-                
-              })
+
+              }
+    
                 
         uploadAdForProduct(productID: editedProduct?.id ?? UUID().uuidString)
         print("AD has been uploaded successfully :)")
@@ -158,7 +202,27 @@ class NewProduct : UIViewController {
 }
 
 
-extension NewProduct :  UIPickerViewDataSource , UIPickerViewDelegate {
+extension NewProduct :  UIPickerViewDataSource , UIPickerViewDelegate , UICollectionViewDelegateFlowLayout , UICollectionViewDelegate , UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imgs.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCView
+        
+        cell.update(img: imgs[indexPath.row])
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let h = collectionView.frame.size.height
+        return CGSize(width: h, height: h )
+    }
+    
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -314,6 +314,7 @@ PODS:
   - SDWebImage (5.8.3):
     - SDWebImage/Core (= 5.8.3)
   - SDWebImage/Core (5.8.3)
+  - TYCyclePagerView (1.2.0)
 
 DEPENDENCIES:
   - BSImagePicker
@@ -322,6 +323,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - SDWebImage
+  - TYCyclePagerView
 
 SPEC REPOS:
   trunk:
@@ -345,6 +347,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SDWebImage
+    - TYCyclePagerView
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -367,7 +370,8 @@ SPEC CHECKSUMS:
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
+  TYCyclePagerView: 2b051dade0615c70784aa34f40c646feeddb7344
 
-PODFILE CHECKSUM: aab8804c709bb0fd3702aedc48ec6afe6d5ebdf5
+PODFILE CHECKSUM: 673f1972671b89722ac5b10d90e3948520b61bf2
 
 COCOAPODS: 1.9.3
