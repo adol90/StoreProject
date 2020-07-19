@@ -76,6 +76,7 @@ class ProductObject {
     func remove() {
         guard let theID = self.id else {return}
         Firestore.firestore().collection("Products").document(theID).delete()
+        Firestore.firestore().collection("Ads").document(theID).delete()
     }
      
     

@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            Firestore.firestore().collection("Users").document(theUser.uid).setData(["Email" : user?.email])
          
         }
+//        let preferedLanguage = Locale.preferredLanguages[0] as String
+//        let lang = preferedLanguage.split(separator: "-")
+//        print(lang[0])
         
         return true
     }

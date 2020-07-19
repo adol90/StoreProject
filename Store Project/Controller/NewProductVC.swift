@@ -80,6 +80,23 @@ class NewProduct : UIViewController {
             
     )}
     
+    @IBAction func removePressed(_ sender: Any) {
+        
+        
+       let alert = UIAlertController(title: "Removal Confirmation!", message: "Do you really want to remove this product!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "YES", style: .destructive) { (yesPressed) in
+            self.editedProduct?.remove()
+            self.navigationController?.popViewController(animated: true)
+            NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: nil, userInfo: nil)
+        }
+        let dismissButton = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        
+        alert.addAction(action) ; alert.addAction(dismissButton)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
     func editingMode() {
         
         let cell = ImageCView()
@@ -146,7 +163,8 @@ class NewProduct : UIViewController {
     
     @IBAction func uploadPressed(_ sender: Any) {
         
-        activityIndicator.isHidden = false
+//        activityIndicator.isHidden = false
+        performSegue(withIdentifier: "uploading", sender: self)
         
         self.uploadManyImgs { (urls : [String]) in
             
@@ -163,13 +181,19 @@ class NewProduct : UIViewController {
             print("product has been uploaded successfully :)")
 
               }
-    
+        NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: nil, userInfo: nil)
+        if adImg.image == nil {
+            
+            self.dismiss(animated: true, completion: nil)
+            navigationController?.popViewController(animated: true)
+        }
                 
         uploadAdForProduct(productID: editedProduct?.id ?? UUID().uuidString)
         print("AD has been uploaded successfully :)")
-            
-//              self.navigationController?.popViewController(animated: true)
-        }
+        NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: nil, userInfo: nil)
+        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+    }
         
         
        

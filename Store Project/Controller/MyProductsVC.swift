@@ -9,6 +9,25 @@
 import UIKit
 
 
+extension MyProductsVC {
+    
+    func setUpRefresher () {
+        refreshControler.addTarget(self, action: #selector(refreshNow), for: .valueChanged)
+        refreshControler.tintColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 0.9820205479)
+        productCView.addSubview(refreshControler)
+    }
+    
+    @objc func refreshNow() {
+        products = []
+        productCView.reloadData()
+        getProducts()
+        refreshControler.endRefreshing()
+        
+    }
+    
+}
+
+
 class MyProductsVC : UIViewController {
     
     //Outlets :
@@ -18,6 +37,7 @@ class MyProductsVC : UIViewController {
     //Variables :
     var products : [ProductObject] = []
     var selectedProduct : ProductObject?
+    var refreshControler : UIRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +47,18 @@ class MyProductsVC : UIViewController {
         productCView.dataSource = self
         
         getProducts()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name("reloadData"), object: nil)
+        setUpRefresher()
+       
+    }
+    
+    @objc func reloadData() {
+        products = []
+        productCView.reloadData()
+        getProducts()
         
     }
+    
     
 }
 extension MyProductsVC : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {

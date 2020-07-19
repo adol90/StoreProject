@@ -30,6 +30,7 @@ class HomeVC : UIViewController {
         setUpCell()
         getProducts()
         startTimer()
+        getLanguage()
         
     }
     
@@ -184,6 +185,24 @@ extension HomeVC : UICollectionViewDelegate , UICollectionViewDataSource , UICol
                 }
 
             }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.tag == 0 {
+            ProductApi.getProduct(id: adArray[indexPath.row].id!) { (product) in
+                self.performSegue(withIdentifier: "toDetails", sender: product)
+            } }
+       else if collectionView.tag == 1 {
+            self.performSegue(withIdentifier: "toDetails", sender: self.latestProductsArray[indexPath.row]) }
+        else if collectionView.tag == 2 {
+            self.performSegue(withIdentifier: "toDetails", sender: self.offersArray[indexPath.row]) }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? ProductDetailsVC {
+            guard let product = sender as? ProductObject else {return}
+            destinationVC.product = product
         }
     }
     

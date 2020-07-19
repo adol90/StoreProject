@@ -21,7 +21,7 @@ class ProductDetailsVC : UIViewController {
         didSet {
             productCView.delegate = self
             productCView.dataSource = self
-            productCView.register(UINib(nibName: "productDetailsCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+            productCView.register(UINib(nibName: "ImageCView", bundle: nil), forCellWithReuseIdentifier: "cell")
         }
     }
     
@@ -54,15 +54,26 @@ class ProductDetailsVC : UIViewController {
 }
 extension ProductDetailsVC : UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 1
+        return self.product.imgUrls?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-     return UICollectionViewCell()
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCView
+        if let imgs = product.imgUrls {
+            cell.update(url: imgs[indexPath.row])}
+        
+     return cell
     }
     
     
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let w = collectionView.frame.size.width
+        let h = collectionView.frame.size.height
+        
+        return CGSize(width: w, height: h)
+    }
     
     
     
