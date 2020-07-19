@@ -117,7 +117,7 @@
                                                     <constraint firstAttribute="height" constant="45" id="f39-aY-XiM"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal" title="Order Now!">
+                                                <state key="normal" title="Add to Cart">
                                                     <color key="titleColor" name="TintClr"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -127,6 +127,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="orderPressed:" destination="oqs-It-4e8" eventType="touchUpInside" id="cMz-xi-4dB"/>
+                                                    <segue destination="tbZ-wP-NrJ" kind="show" id="rcL-pS-led"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -181,6 +182,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbR-5z-bcr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6410" y="-979"/>
+        </scene>
+        <!--CartVC-->
+        <scene sceneID="85y-T8-vgu">
+            <objects>
+                <viewController id="tbZ-wP-NrJ" customClass="CartVC" customModule="Store" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FZm-Ao-fEa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mja-Wy-eXp">
+                                <rect key="frame" x="0.0" y="608" width="414" height="200"/>
+                                <color key="backgroundColor" red="0.83529411760000005" green="0.3921568627" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="SwZ-Vz-Lda"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XPN-u2-6PJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="epH-OQ-3Nd" firstAttribute="trailing" secondItem="Mja-Wy-eXp" secondAttribute="trailing" id="1hl-Yt-ITZ"/>
+                            <constraint firstItem="XPN-u2-6PJ" firstAttribute="top" secondItem="epH-OQ-3Nd" secondAttribute="top" id="4dS-Hg-uRr"/>
+                            <constraint firstItem="XPN-u2-6PJ" firstAttribute="leading" secondItem="epH-OQ-3Nd" secondAttribute="leading" id="C9T-U1-pyv"/>
+                            <constraint firstItem="Mja-Wy-eXp" firstAttribute="leading" secondItem="epH-OQ-3Nd" secondAttribute="leading" id="Lrt-ea-R7z"/>
+                            <constraint firstItem="Mja-Wy-eXp" firstAttribute="top" secondItem="XPN-u2-6PJ" secondAttribute="bottom" constant="8" symbolic="YES" id="UEZ-6a-n0z"/>
+                            <constraint firstItem="epH-OQ-3Nd" firstAttribute="trailing" secondItem="XPN-u2-6PJ" secondAttribute="trailing" id="qcx-8c-1RA"/>
+                            <constraint firstItem="epH-OQ-3Nd" firstAttribute="bottom" secondItem="Mja-Wy-eXp" secondAttribute="bottom" id="swR-Qe-phX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="epH-OQ-3Nd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="laW-6N-Yy8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qo4-yc-4Fg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5388" y="-1123"/>
         </scene>
     </scenes>
     <resources>
