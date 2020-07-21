@@ -14,8 +14,11 @@ class CartCell: UITableViewCell {
 
     @IBOutlet weak var productNameLbl: UILabel!
     @IBOutlet weak var priceLbl: UILabel!
-     @IBOutlet weak var productImg: UIImageView!
-     
+    @IBOutlet weak var productImg: UIImageView!
+    @IBOutlet weak var editedView: UIView!{
+        didSet { editedView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3011558219) ; editedView.layer.borderWidth = 0.8 }
+    }
+    
 
     func update(product : ProductObject) {
        

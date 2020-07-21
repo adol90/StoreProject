@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="218" id="KGk-i7-Jjw" customClass="CartCell" customModule="Store" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="218" id="KGk-i7-Jjw" customClass="CartCell" customModule="Store" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="573" height="218"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -59,6 +59,17 @@
                             <constraint firstAttribute="bottom" secondItem="hO6-dM-WnU" secondAttribute="bottom" id="oqS-Xk-Q1I"/>
                             <constraint firstItem="Ize-Gi-mR2" firstAttribute="leading" secondItem="hO6-dM-WnU" secondAttribute="trailing" constant="8" id="qbH-Qt-7wL"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                <color key="value" white="0.0" alpha="0.28975813356164382" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,6 +83,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="editedView" destination="R3P-fH-BiS" id="pXJ-P8-JEU"/>
                 <outlet property="priceLbl" destination="Edc-OV-anG" id="uJL-oo-aun"/>
                 <outlet property="productImg" destination="hO6-dM-WnU" id="Ccq-CN-xJc"/>
                 <outlet property="productNameLbl" destination="OSi-ao-eNo" id="Jec-Zr-Bec"/>

@@ -47,8 +47,8 @@ class CartManager {
         
         if let data = UserDefaults.standard.array(forKey: "cart") {
             for one in data as? [String] ?? [] {
-                ProductApi.getProduct(id: one) { (product) in
-                    completion (product)
+                ProductApi.getProduct(id: one) { (pro) in
+                    completion (pro)
                 }
             }
         }

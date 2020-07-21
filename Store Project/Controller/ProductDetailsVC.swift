@@ -46,6 +46,7 @@ class ProductDetailsVC : UIViewController {
     @IBAction func increasePressed(_ sender: Any) {
     }
     @IBAction func orderPressed(_ sender: Any) {
+        CartManager.add(product: product)
     }
     
     
