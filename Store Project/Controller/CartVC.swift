@@ -12,6 +12,10 @@ import UIKit
 class CartVC : UIViewController {
     
     var products : [ProductObject] = []
+    @IBOutlet weak var productCostLbl: UILabel!
+    @IBOutlet weak var shippingCost: UILabel!
+    @IBOutlet weak var totalPriceLbl: UILabel!
+    
     
     @IBOutlet weak var tableView: UITableView!{
         didSet {
@@ -25,12 +29,25 @@ class CartVC : UIViewController {
             self.products.append(product)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.calculatePrice()
             }
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         getCart ()
+        
+    }
+    
+    
+    func calculatePrice() {
+        var pCost : Double = 0
+        for one in products {
+            pCost = pCost + (one.price ?? 0.0)
+        }
+        productCostLbl.text = String(pCost) + "ريال"
+        shippingCost.text = String(products.count * 3) + "ريال"
+        totalPriceLbl.text = String(pCost + Double(products.count * 3)) + "ريال"
         
     }
     
@@ -52,6 +69,7 @@ extension CartVC : UITableViewDelegate , UITableViewDataSource {
             CartManager.remove(product: products[indexPath.row])
             products.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            calculatePrice()
         }
     }
     

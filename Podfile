@@ -17,9 +17,10 @@ target 'Store Project' do
   pod 'SDWebImage'
   pod 'Cosmos'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'BSImagePicker'
-  pod 'TYCyclePagerView'
+#  pod 'TYCyclePagerView'
   
 
 end

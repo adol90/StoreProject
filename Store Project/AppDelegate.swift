@@ -19,8 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        
-        
+//        
+//        do  {   try    Auth.auth().signOut() }
+//        catch {print("")}
         Auth.auth().addStateDidChangeListener { (auth, user) in
 //        guard let theUser = user else {return}
 

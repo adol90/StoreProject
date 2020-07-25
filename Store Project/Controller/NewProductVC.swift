@@ -14,10 +14,19 @@ import SDWebImage
 
 
 
-class NewProduct : UIViewController {
+class NewProduct : UIViewController , SelectSectionDelegate {
+    func selectedSection(section: SectionObject) {
+        selectedSection = section
+        
+    }
+    
+
+    
     
     
  //Outlets :
+    
+    
     @IBOutlet weak var nameTxt: UITextField!
     @IBOutlet weak var descriptionTxtView: UITextView!
     @IBOutlet weak var priceTxt: UITextField!
@@ -39,8 +48,10 @@ class NewProduct : UIViewController {
     let collectionArray = ["Products", "Offers"]
     var editedProduct : ProductObject?
     var imgs : [UIImage] = []
+    var selectedSection : SectionObject?
     
     
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -193,6 +204,12 @@ class NewProduct : UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: nil, userInfo: nil)
         self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? SelectSectionVC {
+            destinationVC.delegate = self
+        }
     }
         
         

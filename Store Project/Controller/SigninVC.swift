@@ -36,7 +36,9 @@ class SigninVC : UIViewController , UIScrollViewDelegate {
             
                 if error != nil {
                     print("error while signing in")
-                    self.simpleAlert(title: "Error", msg: "error while trying to signing in")
+//                    self.simpleAlert(title: "Error", msg: "error while trying to signing in")
+                    if let err = error {
+                        MessageBox.show(text: FireError.error(code: err._code)) }
                 } else {
                     print("signed in successfully :D")
                     self.presentingViewController?.dismiss(animated: true, completion: nil)

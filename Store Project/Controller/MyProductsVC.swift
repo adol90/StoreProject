@@ -47,8 +47,9 @@ class MyProductsVC : UIViewController {
         productCView.dataSource = self
         
         getProducts()
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name("reloadData"), object: nil)
         setUpRefresher()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name("reloadData"), object: nil)
+        
        
     }
     
