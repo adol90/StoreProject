@@ -423,7 +423,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="YRQ-aU-nbo"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="19"/>
-                                                <state key="normal" title="Upload Ad image">
+                                                <state key="normal" title="Select Section">
                                                     <color key="titleColor" name="TintClr"/>
                                                 </state>
                                                 <connections>
@@ -510,6 +510,7 @@
                         <outlet property="descriptionTxtView" destination="1mw-a3-UIh" id="xOo-lG-oSq"/>
                         <outlet property="nameTxt" destination="QjR-Na-Fp6" id="Dcl-9r-9Qm"/>
                         <outlet property="priceTxt" destination="cJS-c5-rkz" id="b03-NF-zzc"/>
+                        <outlet property="selectSectionButton" destination="3fO-x8-8SE" id="L48-Ox-JzD"/>
                         <segue destination="XMZ-It-9Yl" kind="presentation" identifier="uploading" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="LH0-Nc-eUa"/>
                     </connections>
                 </viewController>
@@ -756,6 +757,7 @@
                         <segue destination="neF-G4-JL0" kind="relationship" relationship="viewControllers" id="DvW-vO-QXy"/>
                         <segue destination="Yim-ON-Tza" kind="relationship" relationship="viewControllers" id="lpv-cD-lM9"/>
                         <segue destination="54C-Sd-EE6" kind="relationship" relationship="viewControllers" id="6yr-F4-i2U"/>
+                        <segue destination="qJI-9L-QY1" kind="relationship" relationship="viewControllers" id="VbO-6j-n6Z"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vHg-aL-rs1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1266,6 +1268,106 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDI-wY-NRw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1219" y="2062"/>
+        </scene>
+        <!--Sections-->
+        <scene sceneID="BdX-aA-4cs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qJI-9L-QY1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Sections" image="rectangle.grid.2x2" catalog="system" id="gOQ-Vs-y7U"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="TwB-eo-hzw">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="MainColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="MainColor"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="MainColor"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EHm-pE-qN9" kind="relationship" relationship="rootViewController" id="SCz-yD-DaH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kqF-rd-Hkz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7580" y="724"/>
+        </scene>
+        <!-- Sections-->
+        <scene sceneID="aCp-PY-qcC">
+            <objects>
+                <viewController id="EHm-pE-qN9" customClass="HomeSectionVC" customModule="Store" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tef-id-ZcL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ltp-V8-tJ2">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="upB-QD-28w" firstAttribute="bottom" secondItem="ltp-V8-tJ2" secondAttribute="bottom" id="4u2-8a-HbO"/>
+                            <constraint firstItem="ltp-V8-tJ2" firstAttribute="top" secondItem="upB-QD-28w" secondAttribute="top" id="FEJ-VB-unE"/>
+                            <constraint firstItem="upB-QD-28w" firstAttribute="trailing" secondItem="ltp-V8-tJ2" secondAttribute="trailing" id="srN-P1-dVi"/>
+                            <constraint firstItem="ltp-V8-tJ2" firstAttribute="leading" secondItem="upB-QD-28w" secondAttribute="leading" id="wF7-Yj-mzk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="upB-QD-28w"/>
+                    </view>
+                    <navigationItem key="navigationItem" title=" Sections" id="vRW-6c-JLE"/>
+                    <connections>
+                        <outlet property="tableView" destination="ltp-V8-tJ2" id="e37-hp-p6m"/>
+                        <segue destination="i10-Q4-vQV" kind="show" identifier="toProducts" id="jxn-Cn-iGD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y8Q-gm-iIi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7581" y="1448"/>
+        </scene>
+        <!--ProductsInSection-->
+        <scene sceneID="Fjt-Ci-bIx">
+            <objects>
+                <viewController id="i10-Q4-vQV" customClass="ProductsInSectionVC" customModule="Store" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u4x-94-Xka">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XLV-nz-dwH">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="yuQ-7w-Is9">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="iKP-Tt-8iY" firstAttribute="trailing" secondItem="XLV-nz-dwH" secondAttribute="trailing" id="RzB-on-dmW"/>
+                            <constraint firstItem="XLV-nz-dwH" firstAttribute="top" secondItem="iKP-Tt-8iY" secondAttribute="top" id="XWf-Dh-BEO"/>
+                            <constraint firstItem="XLV-nz-dwH" firstAttribute="leading" secondItem="iKP-Tt-8iY" secondAttribute="leading" id="dtX-v4-eyf"/>
+                            <constraint firstItem="iKP-Tt-8iY" firstAttribute="bottom" secondItem="XLV-nz-dwH" secondAttribute="bottom" id="qG0-aI-nsl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iKP-Tt-8iY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="ProductsInSection" id="7MB-Vb-njU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PsH-rH-UII">
+                            <color key="tintColor" name="MainColor"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="productCView" destination="XLV-nz-dwH" id="N7i-Pw-FJJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BZC-Cp-Em8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8741" y="1448"/>
         </scene>
     </scenes>
     <resources>

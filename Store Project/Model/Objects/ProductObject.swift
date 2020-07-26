@@ -15,6 +15,7 @@ class ProductObject {
     
     
     var id : String?
+    var sectionID : String?
     var name : String?
     var imgUrls : [String]?
     var timeStamp : TimeInterval?
@@ -25,8 +26,9 @@ class ProductObject {
     
     
     //this init is to be used in classes to filled the Var's with what the user want then upload it
-    init(id : String ,name : String , imgUrls : [String] ,timeStamp : TimeInterval , company : String , price : Double , description : String)  {
+    init(id : String, sectionID : String ,name : String , imgUrls : [String] ,timeStamp : TimeInterval , company : String , price : Double , description : String)  {
         self.id = id
+        self.sectionID = sectionID
         self.name = name
         self.imgUrls = imgUrls
         self.timeStamp = timeStamp
@@ -39,6 +41,7 @@ class ProductObject {
     init(dictionary : [String : AnyObject]) {
         
         self.id = dictionary["id"] as? String
+        self.sectionID = dictionary["sectionID"] as? String
         self.name = dictionary["name"] as? String
         self.imgUrls = dictionary["imgUrls"] as? [String]
         self.timeStamp = dictionary["timeStamp"] as? TimeInterval
@@ -53,6 +56,7 @@ class ProductObject {
         var data : [String : AnyObject] = [:]
         
         data["id"] = self.id as AnyObject
+        data["sectionID"] = self.sectionID as AnyObject
         data["name"] = self.name as AnyObject
         data["imgUrls"] = self.imgUrls as AnyObject
         data["timeStamp"] = self.timeStamp as AnyObject
@@ -95,10 +99,12 @@ class ProductApi {
         }
     }
     
-    static func getAllProducts (  completion : @escaping (_ product : ProductObject) ->  ()) {
+    static func getAllProducts ( sectionID : String  ,completion : @escaping (_ product : ProductObject) ->  ()) {
            
-    
-        Firestore.firestore().collection("Products").addSnapshotListener { (query, error) in
+    let path = Firestore.firestore().collection("Products")
+        path.whereField("sectinID", isEqualTo: sectionID)
+        
+        path.addSnapshotListener { (query, error) in
             if error != nil {return}
             guard let doucments = query?.documents else {return}
             for doc in doucments {
@@ -108,11 +114,6 @@ class ProductApi {
                 }
             }
         }
-        
-        
-        
-        
-        
 //           Firestore.firestore().collection("Products").getDocuments { (query, error) in
 //                   if error != nil {return}
 //                       guard let doucments = query?.documents else {return}

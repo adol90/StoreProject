@@ -42,14 +42,14 @@ class HomeVC : UIViewController {
             self.homeAdCView.reloadData()
         }
         
-        ProductApi.getAllProducts() { (product) in
+        ProductApi.getAllProducts(sectionID: "") { (product) in
             self.latestProductsArray.append(product)
             self.latestCView.reloadData()
         }
            
-            ProductApi.getAllProducts() { (product) in
-            self.offersArray.append(product)
-            self.offersCView.reloadData() }
+//            ProductApi.getAllProducts() { (product) in
+//            self.offersArray.append(product)
+//            self.offersCView.reloadData() }
         
     }
     

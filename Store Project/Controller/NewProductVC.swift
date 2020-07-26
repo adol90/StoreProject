@@ -17,10 +17,12 @@ import SDWebImage
 class NewProduct : UIViewController , SelectSectionDelegate {
     func selectedSection(section: SectionObject) {
         selectedSection = section
+        selectSectionButton.setTitle(selectedSection?.name, for: .normal)
         
     }
     
-
+    @IBOutlet weak var selectSectionButton: UIButton!
+    
     
     
     
@@ -186,8 +188,8 @@ class NewProduct : UIViewController , SelectSectionDelegate {
                 var randomID : String!
                 if let editingID = self.editedProduct?.id { randomID = editingID }
                 else { randomID = UUID().uuidString }
-
-                let newProduct = ProductObject(id: randomID, name: self.nameTxt.text!, imgUrls : urls ,  timeStamp: Date().timeIntervalSince1970, company: self.companyTxt.text!, price: price, description: self.descriptionTxtView.text!)
+            guard let section = self.selectedSection else {return}
+            let newProduct = ProductObject(id: randomID, sectionID: section.id! , name: self.nameTxt.text!, imgUrls : urls ,  timeStamp: Date().timeIntervalSince1970, company: self.companyTxt.text!, price: price, description: self.descriptionTxtView.text!)
                 newProduct.upload()
             print("product has been uploaded successfully :)")
 

@@ -1,19 +1,15 @@
 //
-//  MyProductsVC.swift
+//  ProductsInSectionVC.swift
 //  Store Project
 //
-//  Created by adol kazmy on 09/07/2020.
-//  Copyright © 2020 Adel Kazme. All rights reserved.
+//  Created by fatma on 05/12/1441 AH.
+//  Copyright © 1441 Adel Kazme. All rights reserved.
 //
 
 import UIKit
 
+class ProductsInSectionVC : UIViewController {
 
-
-
-
-class MyProductsVC : UIViewController {
-    
     //Outlets :
     @IBOutlet weak var productCView: UICollectionView!
     
@@ -47,12 +43,12 @@ class MyProductsVC : UIViewController {
     
     
 }
-extension MyProductsVC : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
+extension ProductsInSectionVC : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     
     func getProducts() {
         
         
-        ProductApi.getAllProducts(sectionID: "") { (product) in
+        ProductApi.getAllProducts(sectionID: inSection!.id!) { (product) in
             
             self.products.append(product)
             self.productCView.reloadData()
@@ -95,7 +91,7 @@ extension MyProductsVC : UICollectionViewDelegate , UICollectionViewDataSource ,
     }
 }
 
-extension MyProductsVC {
+extension ProductsInSectionVC {
     
     func setUpRefresher () {
         refreshControler.addTarget(self, action: #selector(refreshNow), for: .valueChanged)
@@ -112,8 +108,3 @@ extension MyProductsVC {
     }
     
 }
-
-
-
-
-
