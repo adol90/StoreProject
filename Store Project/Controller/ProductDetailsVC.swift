@@ -24,9 +24,13 @@ class ProductDetailsVC : UIViewController {
             productCView.register(UINib(nibName: "ImageCView", bundle: nil), forCellWithReuseIdentifier: "cell")
         }
     }
+    @IBOutlet weak var decreaseBtn: UIButton!
+    @IBOutlet weak var increaseBtn: UIButton!
+    
     
     //Variables :
     var product : ProductObject!
+    var counter = 1
     
     
     
@@ -41,12 +45,30 @@ class ProductDetailsVC : UIViewController {
         self.priceLbl.text = (product.price?.description ?? "0.0") + "ريال"
     }
     
+    func checkBaby() {
+        if counter <= 1 {
+            decreaseBtn.isEnabled = false
+        } else {decreaseBtn.isEnabled = true}
+         if counter == 10 {
+            increaseBtn.isEnabled = false
+        } else {
+            increaseBtn.isEnabled = true
+        }
+    }
+    
     @IBAction func decreasePressed(_ sender: Any) {
+        counter -= 1
+        counterLbl.text = counter.description
+        checkBaby()
     }
     @IBAction func increasePressed(_ sender: Any) {
+       
+        counter += 1
+        counterLbl.text = counter.description
+        checkBaby()
     }
     @IBAction func orderPressed(_ sender: Any) {
-        CartManager.add(product: product)
+        CartManager.add(product: product, quantity: counter)
     }
     
     

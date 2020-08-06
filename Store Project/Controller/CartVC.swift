@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 class CartVC : UIViewController {
@@ -49,6 +50,33 @@ class CartVC : UIViewController {
         shippingCost.text = String(products.count * 3) + "ريال"
         totalPriceLbl.text = String(pCost + Double(products.count * 3)) + "ريال"
         
+    }
+    
+    
+    @IBAction func ApplyOrderPressed(_ sender: Any) {
+        
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if let userID = user?.uid {
+                let ids : [String] = self.products.map({ return $0.id!})
+                let quantities : [Int] = self.products.map({ return $0.quantity!})
+                
+                let newOrder = OrderObject(id: UUID().uuidString, productIDs: ids, quantities: quantities, stamp: Date().timeIntervalSince1970, userID: userID)
+                
+                self.performSegue(withIdentifier: "toNext", sender: newOrder)
+                
+            }
+        }
+        
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? OrderInfoVC {
+            if let order = sender as? OrderObject {
+                destinationVC.order = order
+            }
+        }
     }
     
 }

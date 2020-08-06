@@ -77,18 +77,36 @@ extension ProductsInSectionVC : UICollectionViewDelegate , UICollectionViewDataS
         return CGSize(width: w * 0.33, height: w * 0.55)
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedProduct = products[indexPath.row]
-        
-        performSegue(withIdentifier: "toAddNew", sender: self)
+
+        performSegue(withIdentifier: "toDetails", sender: self)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let destinationVC = segue.destination as? NewProduct {
-            destinationVC.editedProduct = selectedProduct
+
+        if let destinationVC = segue.destination as? ProductDetailsVC {
+            destinationVC.product = selectedProduct
         }
     }
+    
+    
+    
+    // this is OsamaJasim's way :
+//
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let theSelectedP = products[indexPath.row]
+//        performSegue(withIdentifier: "toDetails", sender: theSelectedP)
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let next = segue.destination as? ProductDetailsVC {
+//            if let product = sender as? ProductObject {
+//                next.product = product
+//            }
+//        }
+//    }
 }
 
 extension ProductsInSectionVC {

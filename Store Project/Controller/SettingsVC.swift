@@ -11,7 +11,7 @@ import UIKit
 class SettingsVC : UIViewController {
     
     
-    @IBOutlet weak var adminButton: ButtonLanguage!
+    @IBOutlet weak var adminButton: BtnLanguage!
     
     override func viewDidLoad() {
         super.viewDidLoad()

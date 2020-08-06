@@ -28,9 +28,10 @@
 		DD3287B22497F94A00EF10FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD3287B12497F94A00EF10FD /* Assets.xcassets */; };
 		DD3287B52497F94A00EF10FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD3287B32497F94A00EF10FD /* LaunchScreen.storyboard */; };
 		DD4E14BF24B8EE150092D52A /* UploadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E14BE24B8EE150092D52A /* UploadExtension.swift */; };
+		DD69302724D3122A00433E47 /* ConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD69302624D3122A00433E47 /* ConfirmationVC.swift */; };
+		DD6B71D424DC94EC00F0EC9F /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6B71D324DC94EC00F0EC9F /* ForgetPasswordVC.swift */; };
 		DD6BFF06249A8DD0007CD8AE /* SigninVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6BFF05249A8DD0007CD8AE /* SigninVC.swift */; };
 		DD6BFF08249A8DDF007CD8AE /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6BFF07249A8DDF007CD8AE /* SignupVC.swift */; };
-		DD6BFF0A249A8DEC007CD8AE /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6BFF09249A8DEC007CD8AE /* ForgetPasswordVC.swift */; };
 		DD6BFF0D249A96B8007CD8AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD6BFF0C249A96B7007CD8AE /* GoogleService-Info.plist */; };
 		DD6D3798249E7B9700E3DADB /* HomeAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6D3796249E7B9700E3DADB /* HomeAdCell.swift */; };
 		DD6D3799249E7B9700E3DADB /* HomeAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6D3797249E7B9700E3DADB /* HomeAdCell.xib */; };
@@ -43,6 +44,7 @@
 		DD6DA79724A51A8300BA3702 /* ProductObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DA79624A51A8300BA3702 /* ProductObject.swift */; };
 		DD6DC39A24BA572600E65901 /* ProductDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DC39924BA572600E65901 /* ProductDetailsVC.swift */; };
 		DD6DC39F24BA5C0600E65901 /* ProductDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD6DC39E24BA5C0600E65901 /* ProductDetails.storyboard */; };
+		DD6F9FE324D206CE006C917D /* OrderInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6F9FE224D206CE006C917D /* OrderInfoVC.swift */; };
 		DD7076F024C61751000C7CBE /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7076EE24C61751000C7CBE /* OrderCell.swift */; };
 		DD7076F124C61751000C7CBE /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD7076EF24C61751000C7CBE /* OrderCell.xib */; };
 		DD7076F324C6213A000C7CBE /* OrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7076F224C6213A000C7CBE /* OrderVC.swift */; };
@@ -88,9 +90,10 @@
 		DD3287B42497F94A00EF10FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD3287B62497F94A00EF10FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD4E14BE24B8EE150092D52A /* UploadExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadExtension.swift; sourceTree = "<group>"; };
+		DD69302624D3122A00433E47 /* ConfirmationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationVC.swift; sourceTree = "<group>"; };
+		DD6B71D324DC94EC00F0EC9F /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		DD6BFF05249A8DD0007CD8AE /* SigninVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninVC.swift; sourceTree = "<group>"; };
 		DD6BFF07249A8DDF007CD8AE /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
-		DD6BFF09249A8DEC007CD8AE /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		DD6BFF0C249A96B7007CD8AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD6D3796249E7B9700E3DADB /* HomeAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdCell.swift; sourceTree = "<group>"; };
 		DD6D3797249E7B9700E3DADB /* HomeAdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAdCell.xib; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 		DD6DA79624A51A8300BA3702 /* ProductObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductObject.swift; sourceTree = "<group>"; };
 		DD6DC39924BA572600E65901 /* ProductDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsVC.swift; sourceTree = "<group>"; };
 		DD6DC39E24BA5C0600E65901 /* ProductDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProductDetails.storyboard; sourceTree = "<group>"; };
+		DD6F9FE224D206CE006C917D /* OrderInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfoVC.swift; sourceTree = "<group>"; };
 		DD7076EE24C61751000C7CBE /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		DD7076EF24C61751000C7CBE /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
 		DD7076F224C6213A000C7CBE /* OrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVC.swift; sourceTree = "<group>"; };
@@ -195,8 +199,8 @@
 				624D744924CC5EAA009EC56B /* SelectSectionVC.swift */,
 				DD6D379C249E7DF600E3DADB /* HomeVC.swift */,
 				DD6BFF05249A8DD0007CD8AE /* SigninVC.swift */,
-				DD6BFF09249A8DEC007CD8AE /* ForgetPasswordVC.swift */,
 				DD6BFF07249A8DDF007CD8AE /* SignupVC.swift */,
+				DD6B71D324DC94EC00F0EC9F /* ForgetPasswordVC.swift */,
 				DD72E005249CA9C500112620 /* AuthVC.swift */,
 				DDC60CF124A8A64E0029AF4F /* NewProductVC.swift */,
 				DDEA6A8624B77EE000722437 /* MyProductsVC.swift */,
@@ -208,6 +212,8 @@
 				624B2CE524CB194A00B1A9A7 /* AddNewSectionVC.swift */,
 				624B2CE724CB19D000B1A9A7 /* MySectionsVC.swift */,
 				624D9EE824CDE5F300CAAB4E /* HomeSectionVC.swift */,
+				DD6F9FE224D206CE006C917D /* OrderInfoVC.swift */,
+				DD69302624D3122A00433E47 /* ConfirmationVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				DDEA6A8724B77EE000722437 /* MyProductsVC.swift in Sources */,
 				DDD81C4624A132C2009F1BD8 /* LatestProductCell.swift in Sources */,
 				DD6D407D24C4DF7200E89CBE /* CartVC.swift in Sources */,
+				DD69302724D3122A00433E47 /* ConfirmationVC.swift in Sources */,
 				DD6D379D249E7DF600E3DADB /* HomeVC.swift in Sources */,
 				DD6DC39A24BA572600E65901 /* ProductDetailsVC.swift in Sources */,
 				DD4E14BF24B8EE150092D52A /* UploadExtension.swift in Sources */,
@@ -408,9 +415,11 @@
 				DD72E006249CA9C500112620 /* AuthVC.swift in Sources */,
 				624D9EE924CDE5F300CAAB4E /* HomeSectionVC.swift in Sources */,
 				DD7076F024C61751000C7CBE /* OrderCell.swift in Sources */,
+				DD6B71D424DC94EC00F0EC9F /* ForgetPasswordVC.swift in Sources */,
 				DD7254E3249B3FCE0043350B /* Extension.swift in Sources */,
 				DDCB300224C37FF400A0318A /* OrderObject.swift in Sources */,
 				DDC60CF224A8A64E0029AF4F /* NewProductVC.swift in Sources */,
+				DD6F9FE324D206CE006C917D /* OrderInfoVC.swift in Sources */,
 				6253260724C735EA00F9E74D /* FireError.swift in Sources */,
 				6253260D24C7503C00F9E74D /* MessageBox.swift in Sources */,
 				DD3287A62497F94700EF10FD /* AppDelegate.swift in Sources */,
@@ -422,7 +431,6 @@
 				DD7076F324C6213A000C7CBE /* OrderVC.swift in Sources */,
 				624B2CE824CB19D000B1A9A7 /* MySectionsVC.swift in Sources */,
 				624D744A24CC5EAA009EC56B /* SelectSectionVC.swift in Sources */,
-				DD6BFF0A249A8DEC007CD8AE /* ForgetPasswordVC.swift in Sources */,
 				624CF6EB24C8A44F0081E311 /* SectionObject.swift in Sources */,
 				DD3287A82497F94700EF10FD /* SceneDelegate.swift in Sources */,
 				DDCB300024C35A8C00A0318A /* LanguageDetector.swift in Sources */,

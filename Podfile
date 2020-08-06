@@ -20,6 +20,7 @@ target 'Store Project' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'BSImagePicker'
+  pod 'ProgressHUD'
 #  pod 'TYCyclePagerView'
   
 

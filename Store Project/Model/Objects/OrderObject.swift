@@ -13,15 +13,17 @@ class OrderObject {
     
     var id : String?
     var productIDs : [String]?
+    var quantities : [Int]?
     var stamp : TimeInterval?
     var userID : String?
     
     
-    init(id : String, productIDs : [String], stamp : TimeInterval, userID : String) {
+    init(id : String, productIDs : [String],quantities : [Int], stamp : TimeInterval, userID : String) {
         self.id = id
         self.productIDs = productIDs
         self.stamp = stamp
         self.userID = userID
+        self.quantities = quantities
     }
     
     init(dictionary : [String : AnyObject]) {
@@ -29,6 +31,7 @@ class OrderObject {
         self.productIDs = dictionary["productIDs"] as? [String]
         self.stamp = dictionary["stamp"] as? TimeInterval
         self.userID = dictionary["userID"] as? String
+        self.quantities = dictionary["quantities"] as? [Int]
     }
     
     func makeDictionary() -> [String : AnyObject] {
@@ -38,6 +41,7 @@ class OrderObject {
         dic["productIDs"] = self.productIDs as AnyObject
         dic["stamp"] = self.stamp as AnyObject
         dic["userID"] = self.userID as AnyObject
+        dic["quantities"] = self.quantities as AnyObject
         return dic
     }
     

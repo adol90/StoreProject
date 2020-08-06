@@ -11,21 +11,48 @@ import Foundation
 
 class CartManager {
     
-    static func add(product : ProductObject) {
+    static func extractInfo(str : String) -> (id : String , Quantity : Int){
+        let arr = str.components(separatedBy: "|")
+        return (arr[0], Int(arr[1])!)
+    }
+    
+    static func add(product : ProductObject, quantity : Int) {
+        // new way :
         
         if let data = UserDefaults.standard.array(forKey: "cart") {
-            var exists : Bool = false
             var theData = data
-            for one in data as! [String]{
-                if product.id == one {
-                    exists = true
+            var isNew = true
+            for (index,one) in (data as! [String]).enumerated() {
+                if product.id! == extractInfo(str: one).id {
+                    theData.remove(at: index)
+                    theData.insert((product.id! + "|" + quantity.description), at: index)
+                    UserDefaults.standard.set(theData, forKey: "cart")
+                    isNew = false
                 }
             }
-            if exists == false {
-                theData.append(product.id!)
-                UserDefaults.standard.set(theData, forKey: "cart") }
+            if isNew == true {
+                theData.append(product.id! + "|" + quantity.description)
+                UserDefaults.standard.set(theData, forKey: "cart")
+            } else {
+                UserDefaults.standard.set([(product.id! + "|" + quantity.description)], forKey: "cart")
+            }
+            
         }
-        else { UserDefaults.standard.set([product.id!], forKey: "cart")
+            
+            // old way :
+            //        if let data = UserDefaults.standard.array(forKey: "cart") {
+            //            var isNew = true
+            //            var theData = data
+            //            for one in data as! [String]{
+            //                if product.id == extractInfo(str: one).id {
+            //
+            //                }
+            //            }
+            //
+            //                theData.append(product.id! + "|" + quantity.description)
+            //                UserDefaults.standard.set(theData, forKey: "cart")
+            //        }
+        else { UserDefaults.standard.set([(product.id! + "|" + quantity.description)], forKey: "cart")
         }
     }
     
@@ -34,7 +61,7 @@ class CartManager {
         if let data = UserDefaults.standard.array(forKey: "cart") {
             var theData = data
             for (index,one) in theData.enumerated() {
-                if product.id! == one as? String {
+                if product.id! == extractInfo(str: one as! String).id {
                     theData.remove(at: index)
                 }
             }
@@ -46,8 +73,10 @@ class CartManager {
     static func getAll(completion : @escaping (_ product : ProductObject) -> ()) {
         
         if let data = UserDefaults.standard.array(forKey: "cart") {
-            for one in data as? [String] ?? [] {
-                ProductApi.getProduct(id: one) { (pro) in
+            for one in data as! [String]  {
+                ProductApi.getProduct(id: extractInfo(str: one).id) { (pro) in
+                    let p = pro
+                    p.quantity = extractInfo(str: one).Quantity
                     completion (pro)
                 }
             }

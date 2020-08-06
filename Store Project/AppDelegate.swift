@@ -19,7 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-//        
+// to erase everthing in user's cart :
+//        UserDefaults.standard.set([], forKey: "cart")
+        
+        
+        
 //        do  {   try    Auth.auth().signOut() }
 //        catch {print("")}
         Auth.auth().addStateDidChangeListener { (auth, user) in

@@ -314,6 +314,7 @@ PODS:
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
+  - ProgressHUD (2.70)
   - PromisesObjC (1.2.9)
   - SDWebImage (5.8.4):
     - SDWebImage/Core (= 5.8.4)
@@ -326,6 +327,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - Firebase/Storage
+  - ProgressHUD
   - SDWebImage
 
 SPEC REPOS:
@@ -348,6 +350,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - ProgressHUD
     - PromisesObjC
     - SDWebImage
 
@@ -370,9 +373,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
+  ProgressHUD: e603e8b8622c47d8818b9fb38b3cfe9d3e7ca421
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
 
-PODFILE CHECKSUM: bfff3ef345a940ef2c4f48e3b25829117a47f36b
+PODFILE CHECKSUM: c03bf73ed74d634a5926ff95eeda1bdcbee48b5e
 
 COCOAPODS: 1.9.3

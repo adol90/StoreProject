@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6NH-kC-Nol">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6NH-kC-Nol">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -754,10 +754,10 @@
                     </tabBar>
                     <connections>
                         <segue destination="cai-pG-Efg" kind="relationship" relationship="viewControllers" id="pnq-v3-yiM"/>
+                        <segue destination="qJI-9L-QY1" kind="relationship" relationship="viewControllers" id="VbO-6j-n6Z"/>
                         <segue destination="neF-G4-JL0" kind="relationship" relationship="viewControllers" id="DvW-vO-QXy"/>
                         <segue destination="Yim-ON-Tza" kind="relationship" relationship="viewControllers" id="lpv-cD-lM9"/>
                         <segue destination="54C-Sd-EE6" kind="relationship" relationship="viewControllers" id="6yr-F4-i2U"/>
-                        <segue destination="qJI-9L-QY1" kind="relationship" relationship="viewControllers" id="VbO-6j-n6Z"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vHg-aL-rs1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -856,7 +856,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0GU-qF-7kn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6490" y="947"/>
+            <point key="canvasLocation" x="-6553" y="970"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="edI-Lw-TcD">
@@ -1363,23 +1363,40 @@
                     </navigationItem>
                     <connections>
                         <outlet property="productCView" destination="XLV-nz-dwH" id="N7i-Pw-FJJ"/>
+                        <segue destination="YDc-An-06e" kind="show" identifier="toDetails" id="CLU-0I-wIv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BZC-Cp-Em8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-8741" y="1448"/>
         </scene>
+        <!--ProductDetails-->
+        <scene sceneID="KzE-J4-yBW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProductDetails" id="YDc-An-06e" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gQU-Wo-zRQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sfa-Ug-kln" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8183" y="1574"/>
+        </scene>
     </scenes>
     <resources>
         <image name="adminImg" width="500" height="500"/>
-        <image name="house" catalog="system" width="128" height="110"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="power" catalog="system" width="128" height="124"/>
-        <image name="rectangle.grid.2x2" catalog="system" width="128" height="99"/>
-        <image name="trash" catalog="system" width="121" height="128"/>
-        <image name="tray.2.fill" catalog="system" width="128" height="114"/>
+        <image name="house" catalog="system" width="64" height="54"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="power" catalog="system" width="64" height="62"/>
+        <image name="rectangle.grid.2x2" catalog="system" width="64" height="48"/>
+        <image name="trash" catalog="system" width="60" height="64"/>
+        <image name="tray.2.fill" catalog="system" width="64" height="56"/>
         <namedColor name="MainColor">
             <color red="0.19300000369548798" green="0.51599997282028198" blue="0.89600002765655518" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainColor">
+            <color red="0.19300000369548798" green="0.51599997282028198" blue="0.89600002765655518" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TintClr">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TintClr">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

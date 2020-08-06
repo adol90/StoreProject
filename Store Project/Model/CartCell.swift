@@ -18,11 +18,13 @@ class CartCell: UITableViewCell {
     @IBOutlet weak var editedView: UIView!{
         didSet { editedView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3011558219) ; editedView.layer.borderWidth = 0.8 }
     }
+    @IBOutlet weak var quntityLbl: UILabel!
     
 
     func update(product : ProductObject) {
        
         productNameLbl.text = product.name
+        quntityLbl.text = product.quantity?.description
         
         //to convert a double to String we use .d
      

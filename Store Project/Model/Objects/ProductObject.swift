@@ -23,6 +23,9 @@ class ProductObject {
     var price : Double?
     var description : String?
     
+    //for products quantity in cart :
+    var quantity : Int?
+    
     
     
     //this init is to be used in classes to filled the Var's with what the user want then upload it
@@ -101,8 +104,7 @@ class ProductApi {
     
     static func getAllProducts ( sectionID : String  ,completion : @escaping (_ product : ProductObject) ->  ()) {
            
-    let path = Firestore.firestore().collection("Products")
-        path.whereField("sectinID", isEqualTo: sectionID)
+    let path = Firestore.firestore().collection("Products").whereField("sectionID", isEqualTo: sectionID)
         
         path.addSnapshotListener { (query, error) in
             if error != nil {return}
